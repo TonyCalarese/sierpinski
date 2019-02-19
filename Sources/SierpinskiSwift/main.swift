@@ -44,9 +44,10 @@ func sierpinski(p1: Point, p2: Point, p3: Point, level: Int, figure: SVG) {
     sierpinski(p3, mid_point(p1, p3), mid_point(p2, p3), level - 1);
 	*/
 
-if level <= 0 {
-	return
-}
+    if level <= 0 {
+        return
+    }
+    draw_triangle(p1, p2, p3);
     sierpinski(p1, midpoint(p1, p2), midpoint(p1, p3), level - 1);
     sierpinski(p2, midpoint(p1, p2), midpoint(p2, p3), level - 1);
     sierpinski(p3, midpoint(p1, p3), midpoint(p2, p3), level - 1);
