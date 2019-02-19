@@ -24,17 +24,45 @@ import Foundation
 
 open class SVG {
     // YOUR CODE HERE
+    var content: String
     
     // Initialize the SVG file with commands that will create a
     // width x height canvas
     public init(width: UInt, height: UInt) {
-        // YOUR CODE HERE
+        content = ""
+        content += "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+        content += "<svg version=\"1.1\" baseProfile=\"full\" width=\(width)\" height=\(height)\" xmlns=\"http://www.w3.org/2000/svg\">\n"
     }
     
-    // YOUR CODE HERE
+    
+    func draw_ellipse(x: UInt, y: UInt, width: UInt, height: UInt, color: String)
+    {
+        content += "<ellipse cx=\(x) cy=\(y) rx=\(width/2) ry=\(height/2) fill=\(color) />\n"
+    }
+    
+    func draw_rectangle(x: UInt, y: UInt, width: UInt, height: UInt, color: String)
+    {
+        content += "<rect cx=\(x) y=\(y) width=\(width) height=\(height) fill=\(color) />\n"
+    }
+    
+    func draw_line(x1: UInt, y1: UInt, x2: UInt, y2: Uint, color: String)
+    {
+        content += "<line x1=\(x1) y1=\(y1) x2=\(x2) y2=\(y2) stroke\(color) />\n"
+    }
+    
+    func clear_graphics()
+    {
+        content = ""
+    }
     
     // Write the SVG file to disk
     public func write(filePath: String) {
-        // YOUR CODE HERE
+        content += "</svg>\n"
+        let filename = appendingPathComponent(filePath)
+        do {
+            try content.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print("Error writing svg file")
+        }
     }
 }
