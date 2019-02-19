@@ -48,11 +48,7 @@ if level <= 0 {
 	return
 }
 
-draw_triangle(p1, p2, p3)
-sierpinski(p1, mid_point(p1, p2), mid_point(p1, p3), level - 1);
-sierpinski(p2, mid_point(p1, p2), mid_point(p2, p3), level - 1);
-sierpinski(p3, mid_point(p1, p3), mid_point(p2, p3), level - 1);
-}
+
 
 // Start the algorithm off using a 300x300 canvas and its largest triangle
 // going across that canvas
