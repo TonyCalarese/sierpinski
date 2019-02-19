@@ -35,8 +35,8 @@ Point mid_point(Point p1, Point p2) {
 }
 */
 Point midpoint;
-let midpoint.x = (p1.x + p2.x) /2
-let midpoint.y = (p1.y + p2.y) /2
+var midpoint.x = (p1.x + p2.x) /2
+var midpoint.y = (p1.y + p2.y) /2
 
 return midpoint
 
