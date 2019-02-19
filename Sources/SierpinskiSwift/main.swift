@@ -23,17 +23,15 @@
 import SVGLibrary
 
 // YOUR CODE HERE
-/*
+
+
+
 func draw_triangle(p1: Point, p2: Point, p3: Point, level: Int, figure: SVG) {
-/*
-draw_line(p1.x, p1.y, p2.x, p2.y, "black");
-draw_line(p2.x, p2.y, p3.x, p3.y, "black");
-draw_line(p3.x, p3.y, p1.x, p1.y, "black");
-*/
-
-
+    draw_line(p1.x, p1.y, p2.x, p2.y, "black");
+    draw_line(p2.x, p2.y, p3.x, p3.y, "black");
+    draw_line(p3.x, p3.y, p1.x, p1.y, "black");
 }
- */
+
 // Draw a triangle between the three points and then recursively draw
 // three more triangles in each of the three corners of the first triangle.
 func sierpinski(p1: Point, p2: Point, p3: Point, level: Int, figure: SVG) {
