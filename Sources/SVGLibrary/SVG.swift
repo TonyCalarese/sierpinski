@@ -23,7 +23,8 @@
 import Foundation
 
 open class SVG {
-    // YOUR CODE HERE
+    
+    // the content that will be written to the SVG file
     var content: String
     
     // Initialize the SVG file with commands that will create a
@@ -31,37 +32,39 @@ open class SVG {
     public init(width: UInt, height: UInt) {
         content = ""
         content += "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-        content += "<svg version=\"1.1\" baseProfile=\"full\" width=\(width)\" height=\(height)\" xmlns=\"http://www.w3.org/2000/svg\">\n"
+        content += "<svg version=\"1.1\" baseProfile=\"full\" width=\"\(width)\" height=\"\(height)\" xmlns=\"http://www.w3.org/2000/svg\">\n"
     }
     
     
-    func draw_ellipse(x: UInt, y: UInt, width: UInt, height: UInt, color: String)
+    public func draw_ellipse(x: UInt, y: UInt, width: UInt, height: UInt, color: String)
     {
         content += "<ellipse cx=\(x) cy=\(y) rx=\(width/2) ry=\(height/2) fill=\(color) />\n"
     }
     
-    func draw_rectangle(x: UInt, y: UInt, width: UInt, height: UInt, color: String)
+    public func draw_rectangle(x: UInt, y: UInt, width: UInt, height: UInt, color: String)
     {
         content += "<rect cx=\(x) y=\(y) width=\(width) height=\(height) fill=\(color) />\n"
     }
     
-    func draw_line(x1: UInt, y1: UInt, x2: UInt, y2: Uint, color: String)
+    public func draw_line(_ x1: UInt,_ y1: UInt,_ x2: UInt,_ y2: UInt, color: String)
     {
-        content += "<line x1=\(x1) y1=\(y1) x2=\(x2) y2=\(y2) stroke\(color) />\n"
+        content += "<line x1=\"\(x1)\" y1=\"\(y1)\" x2=\"\(x2)\" y2=\"\(y2)\" stroke=\"\(color)\" />\n"
     }
     
-    func clear_graphics()
+    public func clear_graphics()
     {
+        // set the contents to an empty string so theres nothing in the svg
         content = ""
     }
     
     // Write the SVG file to disk
     public func write(filePath: String) {
         content += "</svg>\n"
-        let filename = appendingPathComponent(filePath)
         do {
-            try content.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+            // write contents to file
+            try content.write(toFile: filePath, atomically: true, encoding: String.Encoding.utf8)
         } catch {
+            // print error
             print("Error writing svg file")
         }
     }
